@@ -1,0 +1,14 @@
+This file is where all the instructions are.
+out - output(print) a line
+make - create a variable
+= - define a variable
+
+if - start an if statement
+otherwise if - else if statement
+otherwise - else statement
+then - everything after the condition
+endBlock - end the code block
+
+while - while loop
+
+function - define function
