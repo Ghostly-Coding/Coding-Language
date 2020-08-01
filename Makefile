@@ -1,9 +1,19 @@
 Cxx=g++
-CFLAGS=-g -Wall
+CFLAGS=-g -Wall -c
+LDFLAGS=-g
+SRC = ${wildcard src/*.cpp}
+HDR = ${wildcard include/*.h}
+OBJ = ${SRC:.cpp=.o}
+EXEC = E
 
-all: compile
 
-%.o: %.c
-	$(Cxx) $(CFLAGS) -c $?
+all: ${SRC} ${OBJ} ${EXEC}
 
+%.o: %.c ${HDR}
+	${Cxx} ${CFLAGS} $< -o $@
 
+${EXEC}: ${OBJ}
+	${Cxx} ${LDFLAGS} $^ -o ${EXEC}
+
+clean:
+	rm  src/*.o ${EXEC}

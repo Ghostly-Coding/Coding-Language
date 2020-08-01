@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "lexer.h"
+#include "../include/lexer.h"
 
 using namespace std;
 
@@ -10,21 +10,22 @@ int main(int argc, char** argv){
 
 		if(!file){
 			cout << "Input file not found." << endl;
-			return 0;
+			return 1;
 		}
 
-		char ch;
 		string text;
-		while(!file.eof()){
-			file >> noskipws >> ch;
-			text += ch;
+		string line;
+		while(getline(file, line)){
+			text += line;
+			line.clear();
 		}
 		cout << text;
 		lexerMain(text);
+		text.clear();
 		file.close();
 	} else {
 		cout << "Input file not specified." << endl;
-		return 0;
+		return 1;
 	}
 
 	return 0;
